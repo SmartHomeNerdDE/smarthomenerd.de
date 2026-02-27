@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Home Nerd | Mach dein Zuhause smart</title>
+<meta name="description" content="Tutorials, Reviews & Automationen für dein Smart Home.">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--nerd-bg: #091021;
+--nerd-card: #0d1629;
+--nerd-border: #1a2847;
+--nerd-text: #fbfcfc;
+--nerd-muted: #8b9bb3;
+--accent: #3b82f6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--nerd-bg); color: var(--nerd-text); min-height: 100vh; }
+
+/* Header */
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(9,16,33,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--nerd-border); }
+.header-content { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+header a { text-decoration: none; color: inherit; }
+.logo { display: flex; align-items: center; gap: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.25rem; }
+.logo img { width: 40px; height: 40px; border-radius: 8px; background: var(--nerd-card); border: 1px solid var(--nerd-border); object-fit: cover; }
+.logo span { color: var(--accent); }
+
+/* Desktop Navigation */
+.nav-desktop { display: flex; gap: 32px; }
+.nav-desktop a { color: var(--nerd-muted); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+.nav-desktop a:hover { color: var(--nerd-text); }
+
+/* Mobile Button */
+.mobile-btn { display: none; width: 44px; height: 44px; background: var(--nerd-card); border: 1px solid var(--nerd-border); border-radius: 8px; color: var(--nerd-text); font-size: 1.5rem; cursor: pointer; align-items: center; justify-content: center; margin-left: auto; }
+
+/* Mobile Menu */
+.mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--nerd-bg); z-index: 9999; flex-direction: column; justify-content: center; align-items: center; gap: 40px; }
+.mobile-menu.active { display: flex; }
+.mobile-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; background: var(--nerd-card); border: 1px solid var(--nerd-border); border-radius: 8px; color: var(--nerd-text); font-size: 1.5rem; cursor: pointer; }
+.mobile-menu a { color: var(--nerd-text); font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 600; text-decoration: none; }
+
+/* Responsive */
+@media (max-width: 767px) {
+.nav-desktop { display: none; }
+.mobile-btn { display: flex; }
+body.menu-open { overflow: hidden; }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeInUp 0.8s ease forwards; opacity: 0; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+/* Sections */
+section { padding: 96px 24px; }
+.container { max-width: 1400px; margin: 0 auto; }
+.text-center { text-align: center; }
+.text-gradient { background: linear-gradient(135deg, #fbfcfc 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+h1, h2 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; }
+h2 { font-size: clamp(2rem, 5vw, 3rem); }
+p { color: var(--nerd-muted); line-height: 1.8; }
+
+/* Hero */
+#hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 80px; }
+.badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 9999px; background: var(--nerd-card); border: 1px solid var(--nerd-border); margin-bottom: 24px; }
+.badge span:first-child { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; border-radius: 9999px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent); filter: brightness(1.1); }
+.btn-secondary { background: var(--nerd-card); border: 1px solid var(--nerd-border); color: var(--nerd-text); }
+.btn-secondary:hover { border-color: var(--accent); }
+.stats { display: flex; justify-content: center; gap: 48px; margin-top: 48px; }
+.stat { text-align: center; }
+.stat-value { font-size: 2rem; font-weight: 700; color: var(--accent); font-family: 'Space Grotesk', sans-serif; }
+.stat-label { font-size: 0.875rem; color: var(--nerd-muted); }
+
+/* About */
+.about-text { max-width: 650px; margin: 0 auto; font-size: 1.125rem; }
+
+/* Setup */
+#setup { background: rgba(13,22,41,0.5); }
+.setup-card { background: var(--nerd-card); border: 1px solid var(--nerd-border); border-radius: 24px; padding: 32px; margin-bottom: 24px; }
+.setup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.setup-item { padding: 16px; background: rgba(9,16,33,0.5); border-radius: 12px; border: 1px solid var(--nerd-border); }
+.setup-item.highlight { background: var(--accent); color: var(--nerd-bg); }
+
+/* Contact */
+#contact { background: rgba(13,22,41,0.5); }
+.contact-box { max-width: 600px; margin: 0 auto; }
+
+/* Footer */
+footer { padding: 48px 24px; border-top: 1px solid var(--nerd-border); background: rgba(13,22,41,0.5); }
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+@media (min-width: 768px) {
+.footer-content { flex-direction: row; justify-content: space-between; }
+}
+
+/* Back to top */
+#back-to-top { position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: #fff; border: none; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 100; }
+#back-to-top.visible { opacity: 1; visibility: visible; }
+#back-to-top:hover { transform: translateY(-4px); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--nerd-bg); }
+::-webkit-scrollbar-thumb { background: var(--nerd-border); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- Back to Top -->
+<button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Zurück nach oben">↑</button>
+
+<!-- Header -->
+<header>
+<div class="header-content">
+<a href="#" class="logo">
+<img src="assets/images/logo-new.webp" alt="Smart Home Nerd Logo">
+<div>Smart Home <span>Nerd</span></div>
+</a>
+
+<nav class="nav-desktop">
+<a href="#about">Über mich</a>
+<a href="#setup">Mein Setup</a>
+<a href="#contact">Kontakt</a>
+</nav>
+
+<button class="mobile-btn" onclick="toggleMenu()" aria-label="Menü öffnen">☰</button>
+</div>
+</header>
+
+<!-- Mobile Menu (außerhalb Header!) -->
+<div id="mobile-menu" class="mobile-menu">
+<button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Menü schließen">✕</button>
+<a href="#about" onclick="toggleMenu()">Über mich</a>
+<a href="#setup" onclick="toggleMenu()">Mein Setup</a>
+<a href="#contact" onclick="toggleMenu()">Kontakt</a>
+</div>
+
+<!-- Hero -->
+<section id="hero">
+<div class="container text-center">
+<div class="animate-in delay-1">
+<div class="badge">
+<span></span>
+<span style="color: var(--nerd-muted); font-size: 0.875rem;">YouTube-Kanal seit 2020</span>
+</div>
+</div>
+
+<h1 class="animate-in delay-2" style="margin-bottom: 24px;">
+<span>Mach dein Zuhause</span><br>
+<span class="text-gradient">smart. Wirklich smart.</span>
+</h1>
+
+<p class="animate-in delay-3" style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 32px;">
+Tutorials, Reviews & Automationen für dein Smart Home. Home Assistant, Zigbee, DIY-Solutions.
+</p>
+
+<div class="animate-in delay-3" style="margin-bottom: 48px;">
+<a href="https://www.youtube.com/@SmartHomeNerd" target="_blank" class="btn btn-primary" style="margin-right: 16px;">Zum YouTube Kanal</a>
+</div>
+
+<div class="stats">
+<div class="stat">
+<div class="stat-value">50+</div>
+<div class="stat-label">Videos</div>
+</div>
+<div class="stat">
+<div class="stat-value">5K+</div>
+<div class="stat-label">Abonnenten</div>
+</div>
+<div class="stat">
+<div class="stat-value">2026</div>
+<div class="stat-label">Seit</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- About -->
+<section id="about">
+<div class="container text-center">
+<h2 style="margin-bottom: 32px;">Hallo, ich bin der <span class="text-gradient">Smart Home Nerd</span></h2>
+<div class="about-text">
+<p style="margin-bottom: 16px;">Ich zeige dir, wie du dein Zuhause wirklich smart machst. Nicht nur mit teuren Produkten, sondern mit cleveren Automationen, die dein Leben einfacher machen.</p>
+<p style="margin-bottom: 32px;">Home Assistant, Zigbee, Node-RED – ich habe mich durch den Dschungel gekämpft, damit du nicht alleine tappen musst.</p>
+</div>
+<a href="https://www.youtube.com/@SmartHomeNerd" target="_blank" class="btn btn-primary">YouTube abonnieren</a>
+</div>
+</section>
+
+<!-- Setup -->
+<section id="setup">
+<div class="container">
+<div class="text-center" style="margin-bottom: 64px;">
+<h2 style="margin-bottom: 16px;">Mein <span class="text-gradient">Setup</span></h2>
+<p style="font-size: 1.125rem; max-width: 600px; margin: 0 auto;">Ein umgebauter Mini-PC als Smart Home Server, Mediacenter und Backup-Zentrale.</p>
+</div>
+
+<div class="setup-card" style="max-width: 900px; margin: 0 auto;">
+<div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+<span style="font-size: 2.5rem;">💻</span>
+<div>
+<h3 style="font-size: 1.5rem;">HP EliteDesk 800 G4 Mini</h3>
+<p style="color: var(--nerd-muted);">Basis-PC für Smart Home & Medien</p>
+</div>
+</div>
+
+<div class="setup-grid">
+<div class="setup-item">
+<div style="font-size: 0.75rem; color: var(--nerd-muted); text-transform: uppercase; margin-bottom: 4px;">CPU</div>
+<div style="font-weight: 600;">Intel Core i5-8500T</div>
+<div style="font-size: 0.75rem; color: var(--nerd-muted);">6 Kerne</div>
+</div>
+<div class="setup-item">
+<div style="font-size: 0.75rem; color: var(--nerd-muted); text-transform: uppercase; margin-bottom: 4px;">RAM</div>
+<div style="font-weight: 600;">32 GB DDR4</div>
+<div style="font-size: 0.75rem; color: var(--nerd-muted);">2x SO-DIMM</div>
+</div>
+<div class="setup-item">
+<div style="font-size: 0.75rem; color: var(--nerd-muted); text-transform: uppercase; margin-bottom: 4px;">Speicher</div>
+<div style="font-weight: 600;">2× 1 TB NVMe</div>
+<div style="font-size: 0.75rem; color: var(--nerd-muted);">RAID-1</div>
+</div>
+<div class="setup-item highlight">
+<div style="font-size: 0.75rem; opacity: 0.8;">Stromverbrauch</div>
+<div style="font-weight: 700; font-size: 1.25rem;">~14W</div>
+<div style="font-size: 0.75rem; opacity: 0.8;">~50€/Jahr</div>
+</div>
+</div>
+
+<div style="margin-top: 24px; text-align: center;">
+<a href="setup.html" style="display:block;text-align:center;margin:0 auto;width:fit-content;padding:16px 32px;background:var(--accent);color:#fff;border-radius:9999px;font-weight:600;text-decoration:none;">Vollständiges Setup ansehen →</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<div class="container">
+<div class="contact-box text-center">
+<div style="width: 64px; height: 64px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 1.75rem;">📧</div>
+<h2 style="margin-bottom: 16px;">Kontakt</h2>
+<p style="margin-bottom: 32px; font-size: 1.125rem;">Fragen, Feedback oder Kooperationsanfragen?<br>Schreib mir einfach.</p>
+<a href="mailto:martinssmarthome@gmail.com" class="btn btn-primary" style="font-size: 1.125rem;">martinssmarthome@gmail.com</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="logo">
+<img src="assets/images/logo-new.webp" alt="Logo" style="width: 32px; height: 32px;">
+<div>Smart Home <span>Nerd</span></div>
+</div>
+<div style="display: flex; gap: 24px; color: var(--nerd-muted); font-size: 0.875rem;">
+<a href="impressum.html" style="color: var(--nerd-muted); text-decoration: none;">Impressum</a>
+<a href="datenschutz.html" style="color: var(--nerd-muted); text-decoration: none;">Datenschutz</a>
+<span>© 2026</span>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- Mobile Menu Script -->
+<script>
+function toggleMenu() {
+var menu = document.getElementById('mobile-menu');
+var btn = document.querySelector('.mobile-btn');
+
+if (menu.classList.contains('active')) {
+menu.classList.remove('active');
+if (btn) btn.innerHTML = '☰';
+document.body.classList.remove('menu-open');
+} else {
+menu.classList.add('active');
+if (btn) btn.innerHTML = '✕';
+document.body.classList.add('menu-open');
+}
+}
+
+// Back to top button
+window.addEventListener('scroll', function() {
+var btn = document.getElementById('back-to-top');
+if (window.scrollY > 500) {
+btn.classList.add('visible');
+} else {
+btn.classList.remove('visible');
+}
+});
+</script>
+
+</body>
+</html>

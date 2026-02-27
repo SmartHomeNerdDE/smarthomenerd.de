@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutz | Smart Home Nerd</title>
+<meta name="description" content="Datenschutzerklärung für Smart Home Nerd.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--nerd-bg: #091021;
+--nerd-card: #0d1629;
+--nerd-border: #1a2847;
+--nerd-text: #fbfcfc;
+--nerd-muted: #8b9bb3;
+--accent: #3b82f6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--nerd-bg); color: var(--nerd-text); min-height: 100vh; }
+
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(9,16,33,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--nerd-border); }
+.header-content { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+header a { text-decoration: none; color: inherit; }
+.logo { display: flex; align-items: center; gap: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.25rem; }
+.logo img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; }
+.logo span { color: var(--accent); }
+
+.back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--nerd-card); border: 1px solid var(--nerd-border); border-radius: 9999px; color: var(--nerd-text); font-weight: 500; font-size: 0.875rem; }
+.back-btn:hover { border-color: var(--accent); }
+
+.mobile-btn { display: none; width: 44px; height: 44px; background: var(--nerd-card); border: 1px solid var(--nerd-border); border-radius: 8px; color: var(--nerd-text); font-size: 1.5rem; cursor: pointer; align-items: center; justify-content: center; margin-left: auto; }
+
+.mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--nerd-bg); z-index: 9999; flex-direction: column; justify-content: center; align-items: center; gap: 40px; }
+.mobile-menu.active { display: flex; }
+.mobile-menu-close { position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; background: var(--nerd-card); border: 1px solid var(--nerd-border); border-radius: 8px; color: var(--nerd-text); font-size: 1.5rem; cursor: pointer; }
+.mobile-menu a { color: var(--nerd-text); font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 600; text-decoration: none; }
+
+@media (max-width: 767px) {
+.back-btn { display: none; }
+.mobile-btn { display: flex; }
+.nav-desktop { display: none; }
+body.menu-open { overflow: hidden; }
+}
+
+main { padding: 140px 24px 60px; }
+.container { max-width: 800px; margin: 0 auto; }
+.text-center { text-align: center; }
+.text-gradient { background: linear-gradient(135deg, #fbfcfc 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 48px; }
+h2 { font-size: 1.25rem; font-weight: 600; margin: 32px 0 16px; color: var(--accent); }
+h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 12px; color: var(--nerd-text); }
+p, li { color: var(--nerd-muted); line-height: 1.8; margin-bottom: 12px; }
+ul { margin-left: 20px; margin-bottom: 16px; }
+
+.card { background: var(--nerd-card); border: 1px solid var(--nerd-border); border-radius: 16px; padding: 32px; margin-bottom: 32px; }
+
+footer { padding: 48px 24px; border-top: 1px solid var(--nerd-border); background: rgba(13,22,41,0.5); }
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+@media (min-width: 768px) { .footer-content { flex-direction: row; justify-content: space-between; } }
+</style>
+</head>
+<body>
+
+<header>
+<div class="header-content">
+<a href="index.html" class="logo">
+<img src="assets/images/logo-new.webp" alt="Logo">
+<div>Smart Home <span>Nerd</span></div>
+</a>
+<button class="mobile-btn" style="margin-left:auto;" onclick="toggleMenu()">☰</button>
+</div>
+</header>
+
+<div id="mobile-menu" class="mobile-menu">
+<button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+<a href="index.html" onclick="toggleMenu()">Startseite</a>
+<a href="index.html#about" onclick="toggleMenu()">Über mich</a>
+<a href="index.html#contact" onclick="toggleMenu()">Kontakt</a>
+</div>
+
+<main>
+<div class="container">
+<h1 class="text-center"><span class="text-gradient">Datenschutz</span></h1>
+
+<div class="card">
+<h2>1. Datenschutz auf einen Blick</h2>
+<h3>Allgemeine Hinweise</h3>
+<p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Deinen personenbezogenen Daten passiert, wenn Du diese Website besuchst.</p>
+
+<h3>Datenerfassung auf dieser Website</h3>
+<p><strong>Wer ist verantwortlich?</strong></p>
+<p>Die Datenverarbeitung erfolgt durch den Websitebetreiber. Kontaktdaten siehe Impressum.</p>
+</div>
+
+<div class="card">
+<h2>2. Allgemeine Hinweise</h2>
+<h3>Datenschutz</h3>
+<p>Der Betreiber nimmt den Schutz Deiner persönlichen Daten sehr ernst. Daten werden vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften behandelt.</p>
+
+<h3>Verantwortliche Stelle</h3>
+<p>Smart Home Nerd</p>
+<p>Kontakt: <a href="mailto:martinssmarthome@gmail.com" style="color:var(--accent);text-decoration:none;">martinssmarthome@gmail.com</a></p>
+
+<h3>Speicherdauer</h3>
+<p>Diese Website speichert KEINE personenbezogenen Daten automatisch. Bei Kontakt per E-Mail werden Daten nur zur Bearbeitung verwendet.</p>
+</div>
+
+<div class="card">
+<h2>3. Datenerfassung</h2>
+<li>Hostname des Rechners</li>
+<li>Uhrzeit der Serveranfrage</li>
+<li>IP-Adresse</li>
+</ul>
+<p>Diese Daten sind nicht bestimmten Personen zuordenbar.</p>
+
+<h3>Kontakt per E-Mail</h3>
+<p>Wenn Du uns per E-Mail kontaktierst, werden Deine Daten zur Bearbeitung der Anfrage gespeichert.</p>
+</div>
+
+<div class="card">
+<h2>4. YouTube</h2>
+<p>Diese Website verlinkt zu YouTube-Videos. Beim Klick gelten die Datenschutzbestimmungen von Google: <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent);">policies.google.com/privacy</a></p>
+</div>
+
+<div class="card">
+<h2>5. Deine Rechte</h2>
+<p>Du hast jederzeit das Recht auf:</p>
+<ul>
+<li>Auskunft über gespeicherte Daten</li>
+<li>Berichtigung falscher Daten</li>
+<li>Löschung Deiner Daten</li>
+<li>Einschränkung der Verarbeitung</li>
+</ul>
+<p>Kontakt: <a href="mailto:martinssmarthome@gmail.com" style="color:var(--accent);text-decoration:none;">martinssmarthome@gmail.com</a></p>
+</div>
+
+<div class="card" style="border-color:var(--accent);">
+<h2>6. Stand</h2>
+<p>Diese Datenschutzerklärung wurde zuletzt aktualisiert am: <strong>26. Februar 2026</strong></p>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="logo">
+<img src="assets/images/logo-new.webp" alt="Logo" style="width: 32px; height: 32px;">
+<div>Smart Home <span>Nerd</span></div>
+</div>
+<div style="display: flex; gap: 24px; color: var(--nerd-muted); font-size: 0.875rem;">
+<a href="impressum.html" style="color: var(--nerd-muted); text-decoration: none;">Impressum</a>
+<a href="datenschutz.html" style="color: var(--nerd-muted); text-decoration: none;">Datenschutz</a>
+<span>© 2026</span>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+function toggleMenu() {
+var menu = document.getElementById('mobile-menu');
+var btn = document.querySelector('.mobile-btn');
+if (menu.classList.contains('active')) {
+menu.classList.remove('active');
+if (btn) btn.innerHTML = '☰';
+document.body.classList.remove('menu-open');
+} else {
+menu.classList.add('active');
+if (btn) btn.innerHTML = '✕';
+document.body.classList.add('menu-open');
+}
+}
+</script>
+
+</body>
+</html>

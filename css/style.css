@@ -1,0 +1,275 @@
+/* =========================================
+   Smart Home Nerd - Custom Styles
+   Colors: #091021 (bg), #fbfcfc (text), #3b82f6 (accent)
+   ========================================= */
+
+:root {
+  --nerd-bg: #091021;
+  --nerd-card: #0d1629;
+  --nerd-border: #1a2847;
+  --nerd-light: #162447;
+  --text-primary: #fbfcfc;
+  --text-secondary: #8b9bb3;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nerd-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nerd-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection Color */
+::selection {
+  background: #3b82f620;
+  color: var(--accent);
+}
+
+/* Gradient Text Utility */
+.text-gradient {
+  background: linear-gradient(135deg, #fbfcfc 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Effects */
+.glow-cyber {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.glow-accent {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+}
+
+/* Grid Background Pattern */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(13, 22, 41, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Header Scroll State */
+.header-scrolled {
+  background: rgba(9, 16, 33, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--nerd-border);
+}
+
+/* Button Hover Glow */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-glow:hover::before {
+  left: 100%;
+}
+
+/* Scroll Indicator Animation */
+@keyframes scroll-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.5;
+  }
+}
+
+.scroll-indicator {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* Video Card Hover Effect */
+.video-card {
+  transition: all 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-8px);
+}
+
+.video-card:hover .video-thumbnail img {
+  transform: scale(1.05);
+}
+
+.video-card .play-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-card:hover .play-overlay {
+  opacity: 1;
+}
+
+/* Setup Card Gradient Border */
+.setup-card {
+  position: relative;
+  background: var(--nerd-card);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.setup-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent) 0%, transparent 50%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.setup-card:hover::before {
+  opacity: 1;
+}
+
+/* Form Input Focus */
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Social Icon Hover */
+.social-icon {
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: var(--accent);
+  color: var(--nerd-bg);
+  transform: translateY(-3px);
+}
+
+/* Animation delays for circuit lines */
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+  transition: all 0.3s ease-in-out;
+}
+
+#mobile-menu:not(.hidden) {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section transitions for GSAP */
+.section-content {
+  will-change: transform, opacity;
+}
+
+/* Card shadow on hover */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient border for contact form */
+.contact-form-wrapper {
+  position: relative;
+  background: var(--nerd-card);
+  border-radius: 1rem;
+}
+
+.contact-form-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

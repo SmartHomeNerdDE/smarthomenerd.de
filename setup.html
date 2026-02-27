@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mein Setup | Smart Home Nerd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<style>
+:root {
+--nerd-bg: #091021;
+--nerd-card: #0d1629;
+--nerd-border: #1a2847;
+--nerd-text: #fbfcfc;
+--nerd-muted: #8b9bb3;
+--accent: #3b82f6;
+--accent-hover: #60a5fa;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+font-family: 'Inter', system-ui, sans-serif;
+background: var(--nerd-bg);
+color: var(--nerd-text);
+line-height: 1.6;
+min-height: 100vh;
+}
+
+/* Header - IDENTISCH mit index.html */
+.header {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 50;
+background: rgba(9,16,33,0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--nerd-border);
+}
+
+.header-content {
+max-width: 1400px;
+margin: 0 auto;
+padding: 0 24px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 80px;
+}
+
+.header a { text-decoration: none; color: inherit; }
+
+.logo {
+display: flex;
+align-items: center;
+gap: 12px;
+font-weight: 700;
+font-size: 1.25rem;
+}
+
+.logo img {
+width: 40px;
+height: 40px;
+border-radius: 8px;
+background: var(--nerd-card);
+border: 1px solid var(--nerd-border);
+object-fit: cover;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-desktop { display: flex; gap: 32px; }
+.nav-desktop a {
+color: var(--nerd-muted);
+text-decoration: none;
+font-size: 0.875rem;
+font-weight: 500;
+transition: color 0.2s;
+}
+.nav-desktop a:hover { color: var(--nerd-text); }
+
+.back-btn {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 12px 24px;
+background: var(--nerd-card);
+border: 1px solid var(--nerd-border);
+border-radius: 9999px;
+color: var(--nerd-text);
+font-weight: 500;
+font-size: 0.875rem;
+transition: all 0.2s;
+}
+.back-btn:hover { border-color: var(--accent); }
+
+.mobile-btn {
+display: none;
+width: 44px;
+height: 44px;
+background: var(--nerd-card);
+border: 1px solid var(--nerd-border);
+border-radius: 8px;
+color: var(--nerd-text);
+font-size: 1.5rem;
+cursor: pointer;
+align-items: center;
+justify-content: center;
+}
+
+.mobile-menu {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: var(--nerd-bg);
+z-index: 9999;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 40px;
+}
+
+.mobile-menu.active { display: flex; }
+
+.mobile-menu-close {
+position: absolute;
+top: 24px;
+right: 24px;
+width: 44px;
+height: 44px;
+background: var(--nerd-card);
+border: 1px solid var(--nerd-border);
+border-radius: 8px;
+color: var(--nerd-text);
+font-size: 1.5rem;
+cursor: pointer;
+}
+
+.mobile-menu a {
+color: var(--nerd-text);
+font-size: 2rem;
+font-weight: 700;
+text-decoration: none;
+}
+
+@media (max-width: 767px) {
+.nav-desktop { display: none !important; }
+.back-btn { display: none !important; }
+.mobile-btn { display: flex !important; }
+body.menu-open { overflow: hidden; }
+}
+
+/* Content Styles */
+section { padding: 120px 24px 60px; }
+.container { max-width: 1000px; margin: 0 auto; }
+.text-center { text-align: center; }
+h1, h2, h3 { font-weight: 700; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 16px; }
+h2 { font-size: 1.5rem; margin: 48px 0 24px; }
+h3 { font-size: 1.25rem; margin-bottom: 16px; }
+p { color: var(--nerd-muted); margin-bottom: 16px; }
+
+.gradient {
+background: linear-gradient(135deg, #fbfcfc 0%, var(--accent) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.hero {
+text-align: center;
+padding-top: 140px;
+padding-bottom: 40px;
+}
+
+.stats {
+display: inline-flex;
+gap: 32px;
+padding: 24px;
+background: var(--nerd-card);
+border-radius: 16px;
+border: 1px solid var(--nerd-border);
+margin-top: 32px;
+}
+
+.stat { text-align: center; flex: 1; min-width: 120px; }
+.stat-val {
+font-size: 2rem;
+font-weight: 700;
+}
+.stat-val.low { color: var(--accent); }
+.stat-val.high { color: #ff6b6b; }
+
+.card {
+background: var(--nerd-card);
+border: 1px solid var(--nerd-border);
+border-radius: 16px;
+padding: 24px;
+margin-bottom: 24px;
+}
+
+ul { list-style: none; }
+li {
+padding: 16px;
+margin-bottom: 12px;
+background: rgba(9,16,33,0.5);
+border-radius: 12px;
+border: 1px solid var(--nerd-border);
+color: var(--nerd-muted);
+}
+li strong { color: var(--nerd-text); display: block; margin-bottom: 4px; }
+
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 16px;
+}
+
+.sw-card {
+background: var(--nerd-card);
+border: 1px solid var(--nerd-border);
+border-radius: 16px;
+padding: 20px;
+}
+
+.sw-card h3 { font-size: 1.1rem; margin-bottom: 12px; }
+.sw-card li { padding: 6px 0; background: transparent; border: none; }
+
+.highlight {
+background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(59,130,246,0.05));
+border-color: var(--accent);
+text-align: center;
+margin-top: 32px;
+}
+
+footer {
+padding: 48px 24px;
+border-top: 1px solid var(--nerd-border);
+background: rgba(13,22,41,0.5);
+}
+
+.footer-content {
+max-width: 1400px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 24px;
+}
+
+@media (min-width: 768px) {
+.footer-content { flex-direction: row; justify-content: space-between; }
+}
+
+.footer-content a { color: var(--nerd-muted); text-decoration: none; font-size: 0.875rem; }
+.footer-content a:hover { color: var(--nerd-text); }
+</style>
+</head>
+<body>
+
+<!-- IDENTISCHER HEADER wie index.html -->
+<header class="header">
+<div class="header-content">
+<a href="index.html" class="logo">
+<img src="assets/images/logo-new.webp" alt="Smart Home Nerd Logo">
+Smart Home <span>Nerd</span>
+</a>
+<nav class="nav-desktop">
+<a href="index.html#about">Über mich</a>
+<a href="index.html#setup">Mein Setup</a>
+<a href="index.html#contact">Kontakt</a>
+</nav>
+<a href="index.html" class="back-btn">← Zurück</a>
+<button class="mobile-btn" onclick="toggleMenu()">☰</button>
+</div>
+</header>
+
+<!-- Mobile Menu - IDENTISCH -->
+<div id="mobile-menu" class="mobile-menu">
+<button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+<a href="index.html#about" onclick="toggleMenu()">Über mich</a>
+<a href="index.html#setup" onclick="toggleMenu()">Mein Setup</a>
+<a href="index.html#contact" onclick="toggleMenu()">Kontakt</a>
+</div>
+
+<!-- INHALT -->
+<section class="hero">
+<div class="container text-center">
+<h1>Mein <span class="gradient">Smart Home</span> Server</h1>
+<p>Ein HP EliteDesk als Home Assistant Hub, Mediaserver und Backup-Zentrale</p>
+<div class="stats">
+<div class="stat"><div class="stat-val low">14W</div><div style="font-size:0.75rem;color:var(--nerd-muted)">Leerlauf</div></div>
+<div class="stat"><div class="stat-val high">25W</div><div style="font-size:0.75rem;color:var(--nerd-muted)">unter Last</div></div>
+<div class="stat"><div class="stat-val low">~50€</div><div style="font-size:0.75rem;color:var(--nerd-muted)">pro Jahr</div></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<h2>💻 Die Hardware</h2>
+
+<div class="card">
+<h3>🖥️ HP EliteDesk 800 G4 Mini</h3>
+<ul>
+<li><strong>CPU:</strong> Intel Core i5-8500T (6 Kerne, energiesparend)</li>
+<li><strong>RAM:</strong> 32 GB DDR4 (2x SO-DIMM)</li>
+<li><strong>NVMe:</strong> 2× 1 TB M.2 NVMe SSDs (RAID-1 Spiegelung)</li>
+<li><strong>SATA:</strong> 500 GB 2.5" SSD mit 3D-Druck-Halterung</li>
+<li><strong>Netzwerk:</strong> 1 Gbit/s & 2.5 Gbit/s (M.2 E-Key)</li>
+<li><strong>Remote:</strong> Intel AMT (vPro) Out-of-Band-Management</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>📻 USB-Dongles</h3>
+<ul>
+<li><strong>Zigbee:</strong> Sonoff Zigbee Dongle-E (Mesh-Netzwerk)</li>
+<li><strong>Thread/M
+atter:</strong> Home Assistant Connect ZBT-1</li>
+<li><strong>Bluetooth:</strong> EDUP USB Bluetooth 5.1 Stick</li>
+<li><strong>KI-Beschleuniger:</strong> Google Coral AI USB-Stick (Objekterkennung)</li>
+</ul>
+</div>
+
+<h2>💿 Software & Dienste</h2>
+
+<div class="grid">
+<div class="sw-card">
+<h3>🏠 Smart Home</h3>
+<ul>
+<li>Home Assistant OS</li>
+</ul>
+</div>
+
+<div class="sw-card">
+<h3>🔒 Netzwerk & Sicherheit</h3>
+<ul>
+<li>AdGuard Home (DNS-Blocker)</li>
+<li>Nginx Proxy Manager</li>
+<li>Netbird VPN (WireGuard)</li>
+</ul>
+</div>
+
+<div class="sw-card">
+<h3>💾 Backup & Sync</h3>
+<ul>
+<li>Duplicati (verschlüsselte Backups)</li>
+<li>Syncthing (E2E-Synchronisation)</li>
+<li>Rclone (Cloud-Anbindungen)</li>
+</ul>
+</div>
+
+<div class="sw-card">
+<h3>🎬 Medien</h3>
+<ul>
+<li>Jellyfin (Filme & Serien)</li>
+<li>Navidrome (Musik)</li>
+<li>Audiobookshelf (Hörbücher)</li>
+</ul>
+</div>
+
+<div class="sw-card">
+<h3>📝 Produktivität</h3>
+<ul>
+<li>Joplin Server (Notizen)</li>
+<li>Vaultwarden (Passwörter)</li>
+<li>Wallos (Abos verwalten)</li>
+</ul>
+</div>
+
+<div class="sw-card">
+<h3>📹 NVR</h3>
+<ul>
+<li>Frigate NVR (KI-Objekterkennung)</li>
+</ul>
+</div>
+</div>
+
+<div class="card highlight">
+<p style="font-size:1.1rem;margin-bottom:8px"><strong>⚡ Energieverbrauch</strong></p>
+<p>~14W Leerlauf / ~20-25W unter Last / ~50€ Stromkosten pro Jahr</p>
+</div>
+
+</div>
+</section>
+
+<!-- IDENTISCHER FOOTER wie index.html -->
+<footer>
+<div class="footer-content">
+<a href="index.html" class="logo">
+<img src="assets/images/logo-new.webp" alt="Logo" style="width:32px;height:32px;">
+Smart Home <span>Nerd</span>
+</a>
+<div style="display:flex;gap:24px;color:var(--nerd-muted);font-size:0.875rem;">
+<a href="impressum.html">Impressum</a>
+<a href="datenschutz.html">Datenschutz</a>
+<span>© 2026</span>
+</div>
+</div>
+</footer>
+
+<!-- IDENTISCHES JAVASCRIPT wie index.html -->
+<script>
+function toggleMenu() {
+var menu = document.getElementById('mobile-menu');
+var btn = document.querySelector('.mobile-btn');
+if (menu.classList.contains('active')) {
+menu.classList.remove('active');
+if (btn) btn.innerHTML = '☰';
+document.body.classList.remove('menu-open');
+} else {
+menu.classList.add('active');
+if (btn) btn.innerHTML = '✕';
+document.body.classList.add('menu-open');
+}
+}
+</script>
+
+</body>
+</html>
