@@ -1,0 +1,35 @@
+{
+  "name": "Smart Home Nerd",
+  "short_name": "SHNerd",
+  "description": "Tutorials, Reviews & Automationen für dein Smart Home",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#091021",
+  "theme_color": "#091021",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "assets/images/logo-new.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/logo-new.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle", "utilities"],
+  "screenshots": [
+    {
+      "src": "assets/images/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}

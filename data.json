@@ -1,0 +1,59 @@
+{
+  "kanal": {
+    "name": "Smart Home Nerd",
+    "seit": "2020",
+    "videos_count": "50+",
+    "abonnenten": "5K+",
+    "youtube_url": "https://www.youtube.com/@SmartHomeNerd",
+    "email": "martinssmarthome@gmail.com"
+  },
+  "hero": {
+    "headline": "Mach dein Zuhause smart. Wirklich smart.",
+    "subtitle": "Tutorials, Reviews & Automationen für dein Smart Home. Home Assistant, Zigbee, DIY-Solutions.",
+    "badge": "YouTube-Kanal seit 2020"
+  },
+  "about": {
+    "title": "Hallo, ich bin der Smart Home Nerd",
+    "text": "Ich zeige dir, wie du dein Zuhause wirklich smart machst. Nicht nur mit teuren Produkten, sondern mit cleveren Automationen, die dein Leben einfacher machen.",
+    "text2": "Home Assistant, Zigbee, Node-RED – ich habe mich durch den Dschungel gekämpft, damit du nicht alleine tappen musst."
+  },
+  "videos": [
+    {
+      "title": "Home Assistant Setup 2025",
+      "description": "Die perfekte Installation Schritt für Schritt.",
+      "duration": "12:34",
+      "url": "https://www.youtube.com/@SmartHomeNerd/videos"
+    },
+    {
+      "title": "Zigbee vs. WiFi",
+      "description": "Welches smarte Protokoll passt zu dir?",
+      "duration": "8:45",
+      "url": "https://www.youtube.com/@SmartHomeNerd/videos"
+    },
+    {
+      "title": "Die beste Automation",
+      "description": "Licht & Heizung automatisch steuern.",
+      "duration": "15:22",
+      "url": "https://www.youtube.com/@SmartHomeNerd/videos"
+    }
+  ],
+  "setup": {
+    "title": "Mein Setup im Überblick",
+    "subtitle": "Ein ausgemusterter Büro-Mini-PC als Smart Home Hub, Mediaserver und Backup-Zentrale.",
+    "hardware": {
+      "basis": "HP EliteDesk 800 G4 Mini",
+      "cpu": "Intel Core i5-8500T (6 Kerne, T-Variante)",
+      "ram": "32 GB DDR4",
+      "storage": "2× 1 TB NVMe SSDs (RAID-1)",
+      "strom": "14W Leerlauf / 25W Last",
+      "kosten": "~50€/Jahr Strom"
+    },
+    "dienste": [
+      "Home Assistant (Smart Home Zentrale)",
+      "Frigate NVR (KI-Objekterkennung)",
+      "Jellyfin (Medien-Streaming)",
+      "AdGuard Home (DNS-Blocker)"
+    ]
+  },
+  "last_updated": "2025-02-25"
+}
